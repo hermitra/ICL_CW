@@ -9,6 +9,6 @@ Unsupervised learning: TRANIE01400919V3
 
 Stochastic Simulation: 01400919_Stoch_Sim_CW
 
-Statistical Modelling : 
+Statistical Modelling : SM2_cw_21.Rmd
 
 
