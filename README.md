@@ -1,2 +1,2 @@
 # MDS_ICL_21
-Methods for data science CW - ICL
+Courseworks from Imperial College - BSc Mathematics with Statistics
