@@ -11,19 +11,30 @@ Courseworks from Imperial College - BSc Mathematics with Statistics
 --> Classification (logistic regression, random forests, SVM)
 
 
-2. Coursework 2: TRANIE01400919V3 (march 2021)
+2. Coursework 2: (march 2021)
+
+file name: TRANIE01400919V3
 
 --> Neural Networks: multi-layer perceptron in numpy, CNN in tensorflow
 --> Unsupervised Learning: k-means, dimensionality reduction, graph-based analysis (networkx)
 
-## Stochastic Simulation (in R): 01400919_Stoch_Sim_CW (december 2020)
+## Stochastic Simulation (in R): (december 2020)
+
+file name: 01400919_Stoch_Sim_CW
+
 --> random variable simulation + statistic tests
 --> Monte Carlo Methods for intergral estimation 
 
-### Statistical Modelling (in R): SM2_cw_21.Rmd (march 2021)
+## Statistical Modelling (in R): (march 2021)
+
+file name: SM2_cw_21.Rmd 
+
 --> modelling counts data using negative binomial distribution & benchmark analysis
 
-### Introduction to Statistical Learning (in R): (march 2021)
+## Introduction to Statistical Learning (in R): (march 2021)
+
+file name: 
+
 --> distance-based methods for dimensionality reduction and k-means (CMS)
 
 
