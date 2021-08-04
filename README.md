@@ -15,15 +15,17 @@
 --> Neural Networks: multi-layer perceptron in numpy, CNN in tensorflow
 --> Unsupervised Learning: k-means, dimensionality reduction, graph-based analysis (networkx)
 
-## Stochastic Simulation (R): (december 2020)
+## Statistical Learning (R): (march 2021)
 
---> random variable simulation + statistic tests
---> Monte Carlo Methods for integral estimation 
+--> distance-based methods for dimensionality reduction and k-means (CMS)
 
 ## Statistical Modelling (R): (march 2021)
 
 --> modelling counts data using negative binomial distribution & benchmark analysis
 
-## Statistical Learning (R): (march 2021)
+## Stochastic Simulation (R): (december 2020)
 
---> distance-based methods for dimensionality reduction and k-means (CMS)
+--> random variable simulation + statistic tests
+--> Monte Carlo Methods for integral estimation 
+
+
