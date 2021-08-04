@@ -9,11 +9,20 @@
 --> Regression (least squares, ridge, kNN) with 5-fold cross validation
 --> Classification (logistic regression, random forests, SVM)
 
-
 ### Coursework 2: (march 2021)
 
 --> Neural Networks: multi-layer perceptron in numpy, CNN in tensorflow
 --> Unsupervised Learning: k-means, dimensionality reduction, graph-based analysis (networkx)
+
+## Numerical Analysis (Matlab): (march 2020)
+
+### Coursework 1: (february 2020)
+
+--> parallel QR decomposition
+
+### Coursework 2: (march 2020)
+
+--> boundary value problem solved with Chebyshev polynomials
 
 ## Statistical Learning (R): (march 2021)
 
@@ -28,4 +37,12 @@
 --> random variable simulation + statistic tests
 --> Monte Carlo Methods for integral estimation 
 
+## Time Series (Matlab): (december 2020)
 
+--> bias properties of periodogram direct spectral estimator for AR processes
+--> AR fitting using 3 different methods
+--> forecasting
+
+## Year 2 research project (Matlab): (june 2020)
+
+--> Runge phenomenon and finite differences
