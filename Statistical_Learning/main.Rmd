@@ -1,0 +1,135 @@
+---
+title: "cw"
+output:
+  bookdown: pdf_document2:
+    toc: FALSE
+    number_sections: FALSE
+header-includes: \usepackage{mathtools, amsmath, mathtools}
+---
+
+```{r setup, include=FALSE}
+#if (require("pacman")) install.packages("pacman")
+#pacman::p_load(pacman, numbers, nleqslv, ggplot2, forecast, plyr, dplyr, pracma, knitr, goftest, kableExtra, tidyverse, #coret, bookdown,StarMatch, class, e1071)
+```
+
+```{r}
+library(knitr)
+diab <- read.csv("diabetes.csv", header=T, stringsAsFactors=F)
+#summary(diab)
+kable(head(diab))
+colnames(diab)[9] <- "diabetes"
+#diab$diabetes <- as.factor(diab$diabetes)
+#levels(diab$diabetes) <- c("No","Yes")
+#kable(head(diab))
+
+# different scales, units in the features
+# MDS is visualisation of distances
+# why? visualization, if you have a new patient, you want to be able to see how he compares to other patients
+
+#MDS methods take similarity between pairs of points, such as
+#distance, and uses them to estimate where the points are in space while
+#trying to preserve their pairwise similarity. This method is useful if
+#you want to visualize points but all you have is a measure of something
+#like distance.
+```
+
+```{r}
+diab_pred <- subset(diab, select=-c(diabetes))
+kable(head(diab_pred))
+diab_pred <- diab_pred %>% mutate_at(colnames(diab_pred), ~(scale(.) %>% as.vector))
+#diab_pred <- diab %>% mutate_at(colnames(diab), ~(scale(.) %>% as.vector))
+#kable(head(diab_pred))
+```
+
+```{r}
+# Euclidean distance
+d_euc <- dist(diab_pred, method = "euclidean")
+d_scale_sol <- cmdscale(d_euc, k=4, eig=TRUE)
+
+d_scale_sol$eig[1:8] / d_scale_sol$eig[1]
+plot(1:length(d_scale_sol$eig), d_scale_sol$eig, xlab="Eigenvalue number", ylab="Eigenvalues", main="Eigenvalue plot using euclidean distance")
+abline(h=0, lty=2)
+
+# Manhattan distance
+d_man <- dist(diab_pred, method = "manhattan")
+d_scale_solman <- cmdscale(d_man, k=4, eig=TRUE)
+
+d_scale_solman$eig[1:8] / d_scale_solman$eig[1]
+plot(1:length(d_scale_solman$eig), d_scale_solman$eig, xlab="Eigenvalue number", ylab="Eigenvalues", main="Eigenvalue plot using Manhattan distance")
+abline(h=0, lty=2)
+
+# Minkowski distance
+d_mink <- dist(diab_pred, method = "minkowski")
+d_scale_solmink <- cmdscale(d_mink, k=4, eig=TRUE)
+
+d_scale_solmink$eig[1:8] / d_scale_solmink$eig[1]
+plot(1:length(d_scale_solmink$eig), d_scale_solmink$eig, xlab="Eigenvalue number", ylab="Eigenvalues", main="Eigenvalue plot using Minkowski distance")
+abline(h=0, lty=2)
+
+# Canberra distance: best one <3
+d_can <- dist(diab_pred, method = "canberra")
+d_scale_solcan <- cmdscale(d_can, k=4, eig=TRUE)
+
+d_scale_solcan$eig[1:8] / d_scale_solcan$eig[1]
+plot(1:length(d_scale_solcan$eig), d_scale_solcan$eig, xlab="Eigenvalue number", ylab="Eigenvalues", main="Eigenvalue plot using Canberra distance")
+abline(h=0, lty=2)
+
+```
+
+```{r}
+the.eigs <- d_scale_sol$eig
+plot(1:768, log(abs(the.eigs)), xlab="Eigenvalue number",
+     ylab="Log(Abs(Eigenvalue))", type="n", main="Log Abs Eigenvalue plot with Euclidean distance")
+points(1:389, log(abs(the.eigs[1:389])), col=1)
+points(390:768, log(abs(the.eigs[390:768])), col=4)
+abline(h=-40.88713, lty=411)
+#abline(v=-40.88713, lty=411, col=2)
+#arrows(x0=412, y0=18, x1=30.5, y1=13.5)
+text(x=13, y=20, label="Zero eigenvalue")
+legend(x="bottomright", col=c(1,4), pch=1,
+       legend=c("Positive", "Negative"))
+
+```
+
+```{r}
+#d_man <- dist(diab_pred, method = "manhattan")
+
+xy <- cbind(d_scale_sol$points[,1], d_scale_sol$points[,2])
+xy <- data.frame(xy)
+colnames(xy) = c("x", "y")
+ggplot(xy, aes(x=x, y=y, colour = factor(diab$diabetes))) + geom_point() + labs(title="Classical multidimensional scaling on Standard Euclidean", color = 'Diabetes', x= "Y[,1]", y="Y[,2]")
+
+xyman <- cbind(d_scale_solman$points[,1], d_scale_solman$points[,2])
+xyman <- data.frame(xyman)
+colnames(xyman) = c("x", "y")
+ggplot(xyman, aes(x=x, y=y, colour = factor(diab$diabetes))) + geom_point() + labs(title="Classical multidimensional scaling on Manhattan", color = 'Diabetes', x= "Y[,1]", y="Y[,2]")
+
+xycan <- cbind(d_scale_solcan$points[,1], d_scale_solcan$points[,2])
+xycan <- data.frame(xycan)
+colnames(xycan) = c("x", "y")
+ggplot(xycan, aes(x=x, y=y, colour = factor(diab$diabetes))) + geom_point() + labs(title="Classical multidimensional scaling on Canberra", color = 'Diabetes', x= "Y[,1]", y="Y[,2]")
+
+```
+
+```{r}
+clust <- kmeans(x=diab_pred, centers=2)
+
+ggplot(xy, aes(x=x, y=y, shape=factor(clust$cluster), colour = factor(diab$diabetes))) + geom_point() + labs(title = "K-means clustering for Euclidean distance", color="Diabetes?", shape= "Cluster #", x="Y[,1]", y="[,2]")
+
+ggplot(xycan, aes(x=x, y=y, shape=factor(clust$cluster), colour = factor(diab$diabetes))) + geom_point() + labs(title = "K-means clustering for Canberra distance", color="Diabetes?", shape= "Cluster #", x="Y[,1]", y="[,2]")
+
+# easier to classify someone without diabetes in this data because there are more data points from people who don't have diabetes
+```
+
+```{r}
+library("kohonen")
+#diab_pred <- subset(diab, select=-c(diabetes))
+#diab_pred <- diab_pred %>% mutate_at(colnames(diab_pred), ~(scale(.) %>% as.vector))
+xycan <- data.frame(diab_pred)
+diab_pred_som <- data.matrix(xycan)
+plot(som(diab_pred_som, somgrid(8,8, "rectangular")), type="codes")
+```
+
+
+
+
