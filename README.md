@@ -1,9 +1,8 @@
-# MDS_ICL_21
-Courseworks from Imperial College - BSc Mathematics with Statistics
+# Courseworks from Imperial College - BSc Mathematics with Statistics
 
-## Data Science (in Python):
+## Data Science (Python):
 
-1. Coursework 1: Tranie01400919_V2.html (february 2021)
+### Coursework 1: (february 2021)
 
 (using numpy, pandas and matplotlib only)
 
@@ -11,30 +10,20 @@ Courseworks from Imperial College - BSc Mathematics with Statistics
 --> Classification (logistic regression, random forests, SVM)
 
 
-2. Coursework 2: (march 2021)
-
-file name: TRANIE01400919V3
+### Coursework 2: (march 2021)
 
 --> Neural Networks: multi-layer perceptron in numpy, CNN in tensorflow
 --> Unsupervised Learning: k-means, dimensionality reduction, graph-based analysis (networkx)
 
-## Stochastic Simulation (in R): (december 2020)
-
-file name: 01400919_Stoch_Sim_CW
+## Stochastic Simulation (R): (december 2020)
 
 --> random variable simulation + statistic tests
 --> Monte Carlo Methods for intergral estimation 
 
-## Statistical Modelling (in R): (march 2021)
-
-file name: SM2_cw_21.Rmd 
+## Statistical Modelling (R): (march 2021)
 
 --> modelling counts data using negative binomial distribution & benchmark analysis
 
-## Statistical Learning (in R): (march 2021)
-
-file name: 
+## Statistical Learning (R): (march 2021)
 
 --> distance-based methods for dimensionality reduction and k-means (CMS)
-
-
