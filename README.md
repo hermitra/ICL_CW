@@ -1,7 +1,7 @@
 # MDS_ICL_21
 Courseworks from Imperial College - BSc Mathematics with Statistics
 
-## Methods for Data Science (in Python):
+## Data Science (in Python):
 
 1. Coursework 1: Tranie01400919_V2.html (february 2021)
 
@@ -31,7 +31,7 @@ file name: SM2_cw_21.Rmd
 
 --> modelling counts data using negative binomial distribution & benchmark analysis
 
-## Introduction to Statistical Learning (in R): (march 2021)
+## Statistical Learning (in R): (march 2021)
 
 file name: 
 
