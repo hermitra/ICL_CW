@@ -18,7 +18,7 @@
 ## Stochastic Simulation (R): (december 2020)
 
 --> random variable simulation + statistic tests
---> Monte Carlo Methods for intergral estimation 
+--> Monte Carlo Methods for integral estimation 
 
 ## Statistical Modelling (R): (march 2021)
 
